@@ -68,6 +68,16 @@ public  class Plat implements Comparable{
     public void setPrix_plat(int prix_plat) {
         this.prix_plat = prix_plat;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+    
     
     
    

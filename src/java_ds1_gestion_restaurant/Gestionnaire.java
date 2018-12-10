@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Gestionnaire  {
     
-    private Vector<Plat> ListeP = new Vector();
+    public static Vector<Plat> ListeP = new Vector();
     private Vector<commande> ListeC = new Vector();
     private Vector<ligne_commande> ListeLC = new Vector();
     
@@ -30,6 +30,20 @@ public class Gestionnaire  {
     
     public void modifier_details_plat(){
         
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Donner le code du plat : ");
+        String code = sc.nextLine();
+        for (int i = 0; i < ListeP.size(); i++) {
+            if (ListeP.get(i).getCode_plat().equals(code))
+            {
+                System.out.println("donner les nouveaux détails du plat ' " + ListeP.get(i).getNom_plat() + " '");
+                Plat p = new Plat();
+                ListeP.get(i).setCode_plat(p.getCode_plat());
+                ListeP.get(i).setNom_plat(p.getNom_plat());
+                ListeP.get(i).setPrix_plat(p.getPrix_plat());
+                ListeP.get(i).setType(p.getType());
+            }
+        }
         
 }
     
@@ -52,7 +66,10 @@ public class Gestionnaire  {
         }
             for (int i = 0; i < ListeP.size(); i++) {
             if (ListeP.get(i) instanceof Plat) {              
-                System.out.println(ListeP.get(i).getCode_plat());             
+                System.out.println(ListeP.get(i));  
+                if (Plat.gettype=) {
+                    
+                }
             }   
         }
     }
@@ -65,8 +82,8 @@ public class Gestionnaire  {
             
             do {
                 System.out.println("commande SVP :\nchoisir le plat   :");
-                Scanner sc = new Scanner(System.in);
-                String x = sc.nextLine();
+                commande cmd = new commande();
+                ListeC.add(cmd);
             }
             while(ListeP.equals(""));
     }
@@ -76,9 +93,12 @@ public class Gestionnaire  {
     
 
     public void afficher_detais_commande(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Donner le code de la commande : ");
+        int code = sc.nextInt();
              for (int i = 0; i < ListeC.size(); i++) {
-                  if (ListeC.get(i) instanceof commande) {              
-                System.out.println(ListeP.get(i).toString());             
+                  if (ListeC.get(i).getCode_commande() == code) {              
+                System.out.println(ListeC.get(i).toString());             
             }         
         }
    }
@@ -89,7 +109,14 @@ public class Gestionnaire  {
     
     
     public void cloturer_commande(){
-             
+             Scanner sc=new Scanner(System.in);
+        System.out.println("Donner le code de la commande : ");
+        int code = sc.nextInt();
+             for (int i = 0; i < ListeC.size(); i++) {
+                  if (ListeC.get(i).getCode_commande() == code) {              
+                ListeC.get(i).setClient_quitte(true);
+            }         
+        }
          }
   
     
@@ -126,7 +153,8 @@ public class Gestionnaire  {
     
     public void plat_plus_commandee(){
              
-             
+            
+        
          }
 
 
