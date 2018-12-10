@@ -9,7 +9,9 @@ public  class Plat implements Comparable{
     private String nom_plat;
     private int prix_plat;
     private String type;
-    
+    private int nbrCmd;
+
+
     
     public Plat() {
         
@@ -33,6 +35,7 @@ public  class Plat implements Comparable{
               case 3: this.type="dessert";break;
           
           }
+          this.nbrCmd++;
     
 }
     
@@ -44,6 +47,16 @@ public  class Plat implements Comparable{
         this.prix_plat = prix_plat;
     }
 
+    public int getNbrCmd() {
+        return nbrCmd;
+    }
+
+    public void setNbrCmd(int nbrCmd) {
+        this.nbrCmd = nbrCmd;
+    }
+
+    
+    
 
     public String getCode_plat() {
         return code_plat;

@@ -8,12 +8,12 @@ public class ligne_commande {
    
     private int quantite_plat;
     private Plat plat;
-    private double Prix;
+    private double prixTotal;
 
     public ligne_commande(int quantite_plat, Plat cat, double Prix) {
         this.quantite_plat = quantite_plat;
         this.plat = cat;
-        this.Prix = Prix;
+        this.prixTotal = Prix;
     }
     
     public ligne_commande() {
@@ -21,12 +21,14 @@ public class ligne_commande {
         System.out.println("Donner le code du plat : ");
         String code = sc.nextLine();
         for (int i = 0; i < ListeP.size(); i++) {
-            if (ListeP.get(i).getCode_plat().equals(code))
+            if (ListeP.get(i).getCode_plat().equals(code)) {
                 this.plat = ListeP.get(i);
+                ListeP.get(i).setNbrCmd(ListeP.get(i).getNbrCmd()+1);
+            }
         }
         System.out.println("Donner le nombre de plat ");
         this.quantite_plat = sc.nextInt();
-        this.Prix = plat.getPrix_plat()*quantite_plat;
+        this.prixTotal = plat.getPrix_plat()*quantite_plat;
         
     }
     
@@ -53,12 +55,12 @@ public class ligne_commande {
         this.plat = cat;
     }
 
-    public double getPrix() {
-        return Prix;
+    public double getPrixTotal() {
+        return prixTotal;
     }
 
-    public void setPrix(double Prix) {
-        this.Prix = Prix;
+    public void setPrixTotal(double Prix) {
+        this.prixTotal = Prix;
     }
     
     

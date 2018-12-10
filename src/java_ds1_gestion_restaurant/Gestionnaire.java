@@ -1,7 +1,12 @@
 
 package java_ds1_gestion_restaurant;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Vector;
 import java.util.Scanner;
 
@@ -67,18 +72,20 @@ public class Gestionnaire  {
             for (int i = 0; i < ListeP.size(); i++) {
             if (ListeP.get(i) instanceof Plat) {              
                 System.out.println(ListeP.get(i));  
-                if (Plat.gettype=) {
+                
+                        
+                        
                     
                 }
             }   
         }
-    }
+   
     
     
     
     
     
-    public void cree_commande(){
+    public void cree_commande() throws ParseException{
             
             do {
                 System.out.println("commande SVP :\nchoisir le plat   :");
@@ -123,11 +130,17 @@ public class Gestionnaire  {
     
     
          
-    public void afficher_recette_journaliere(){
+    public void afficher_recette_journaliere() throws ParseException{
           
-            for (int i = 0; i < ListeP.size(); i++) {
-            if (ListeLC.get(i) instanceof ligne_commande) {              
-                System.out.println(ListeLC.get(i).get());             
+        Date mydate = Calendar.getInstance().getTime();
+        DateFormat dateCurrent = new SimpleDateFormat("d MMM yyyy");
+        String currentDate = dateCurrent.format(mydate);
+        Date day = dateCurrent.parse(currentDate);
+        
+        int somme_recette_journaliere=0;
+            for (int i = 0; i < ListeC.size(); i++) {
+            if (ListeC.get(i).getDate_commande().compareTo(day) == 0) {              
+                somme_recette_journaliere += ListeC.get(i).calcule_totalCommande();             
             }   
         }
              
@@ -152,6 +165,18 @@ public class Gestionnaire  {
     
     
     public void plat_plus_commandee(){
+       
+       int max=ListeP.get(0).getNbrCmd(); 
+       int indice = 0;
+       for(int i=1; i<ListeP.size();i++)
+       {
+           if(ListeP.get(i).getNbrCmd()>max) {
+               max = ListeP.get(i).getNbrCmd() ;
+               indice = i;
+           }
+       }
+       System.out.println("Le plat le plus commande est :"+ListeP.get(indice).toString());
+   }
              
             
         
@@ -159,4 +184,4 @@ public class Gestionnaire  {
 
 
 
-}
+

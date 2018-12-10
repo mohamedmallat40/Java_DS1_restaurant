@@ -1,6 +1,10 @@
 
 package java_ds1_gestion_restaurant;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
 import java.util.Random;
@@ -11,14 +15,14 @@ public class commande  {
     
     private int code_commande ;
     private int num_table;
-    private Date date_commande = new Date();
+    private Date date_commande ;
     private Date heure_commande ;
     private String mode_payement;
     private boolean client_quitte = false;
     private Vector<ligne_commande> ligne_cmd = new Vector();
     
     
-    public commande(){
+    public commande() throws ParseException{
         
         Scanner sc=new Scanner(System.in);
         System.out.println("Donner code de la table: ");
@@ -26,7 +30,21 @@ public class commande  {
         System.out.println("donner le numero de la table :");
         this.num_table= sc.nextInt();
         
+        Date mydate = Calendar.getInstance().getTime();
+        String pattern = "HH:mm";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        String h = sdf.format(mydate);
+         Date heure = sdf.parse(h);
+         this.heure_commande = heure;
         
+         DateFormat dateCurrent = new SimpleDateFormat("d MMM yyyy");
+        String currentDate = dateCurrent.format(mydate);
+        Date day = dateCurrent.parse(currentDate);
+        
+        this.date_commande = day;
+        
+
+
         
         
         System.out.println("Donner le nombre des commandes");
@@ -51,6 +69,16 @@ public class commande  {
         this.heure_commande = heure_commande;
         this.mode_payement = mode_payement;
     }
+    
+    
+    public int calcule_totalCommande() {
+        int somme = 0 ; 
+        for (int i = 0; i < this.ligne_cmd.size(); i++) {
+            somme += this.ligne_cmd.get(i).getPrixTotal();
+        }
+        return somme;
+    }
+    
 
     public int getCode_commande() {
         return code_commande;
@@ -107,6 +135,8 @@ public class commande  {
     public void setLigne_cmd(Vector<ligne_commande> ligne_cmd) {
         this.ligne_cmd = ligne_cmd;
     }
+    
+    
     
     
   

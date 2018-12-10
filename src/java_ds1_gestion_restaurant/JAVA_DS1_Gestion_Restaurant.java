@@ -1,10 +1,11 @@
 
 package java_ds1_gestion_restaurant;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class JAVA_DS1_Gestion_Restaurant {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
         Scanner sc=new Scanner(System.in);
         Gestionnaire ges=new Gestionnaire();
