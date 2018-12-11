@@ -97,7 +97,7 @@ public  class Plat implements Comparable{
     
     @Override
     public String toString(){
-        return "plat ("+"nom :"+ nom_plat +", code :"+ code_plat +", le prix est :"+ prix_plat;
+        return "plat ("+"nom :\t"+ nom_plat +", code :\t"+ code_plat +", le prix est :\t"+ prix_plat+")";
     }
 
     @Override

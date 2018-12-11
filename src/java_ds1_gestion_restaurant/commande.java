@@ -55,10 +55,10 @@ public class commande  {
         }
         
         
-        do {
+        /*do {
             System.out.println("donner le mode de payement : doit etre espece, cheque ou carte bancaire");
             this.mode_payement=sc.nextLine();
-        } while (mode_payement.equals("espece") && mode_payement.equals("cheque")&& mode_payement.equals("carte bancaire"));
+        } while (mode_payement.equals("espece") && mode_payement.equals("cheque")&& mode_payement.equals("carte bancaire"));*/
         
     }
     
@@ -152,7 +152,7 @@ public class commande  {
            for (int i = 0; i < ligne_cmd.size(); i++) {
             n= n + ligne_cmd.get(i).getCat().getNom_plat() + " qté: " + ligne_cmd.get(i).getQuantite_plat() + "\n";
         }
-        return "  commande { code commande :\t"+ code_commande +"\n\tdate commande :"+ date_commande +"heure commande\n\t :"+ heure_commande+"\n "+ n +  "\n " + statut +" }";
+        return "  commande {\n code commande :\t"+ code_commande +"\ndate commande\t :"+ date_commande +"\nheure commande\t :"+ heure_commande+"\n"+ n +  "\nstatut\t " + statut +" }";
     }
     
     

@@ -1,5 +1,6 @@
 
 package java_ds1_gestion_restaurant;
+
 import java.util.Scanner;
 import static java_ds1_gestion_restaurant.Gestionnaire.ListeP;
 
@@ -9,6 +10,7 @@ public class ligne_commande {
     private int quantite_plat;
     private Plat plat;
     private double prixTotal;
+    private String mode_payement;
 
     public ligne_commande(int quantite_plat, Plat cat, double Prix) {
         this.quantite_plat = quantite_plat;
@@ -34,9 +36,6 @@ public class ligne_commande {
     
    
    
-    
-    
-    
 
     
     public int getQuantite_plat() {

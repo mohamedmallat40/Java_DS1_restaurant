@@ -11,24 +11,24 @@ public class JAVA_DS1_Gestion_Restaurant {
         Gestionnaire ges=new Gestionnaire();
         int x;
         do {
-            
-        System.out.println("1.ajouter un plat");
-        System.out.println("2.modifier les details d'un plat");
-        System.out.println("3.afficher liste plats");
+        System.out.println("************************MENU********************************");
+        System.out.println("1.\tajouter un plat");
+        System.out.println("2.\tmodifier les details d'un plat");
+        System.out.println("3.\tafficher liste plats");
         
         
-        System.out.println("4.cree un commande");
-        System.out.println("5.afficher details d'un commande");
-        System.out.println("6.cloturer in commande");
+        System.out.println("4.\tcree un commande");
+        System.out.println("5.\tafficher details d'un commande");
+        System.out.println("6.\tcloturer un commande");
         
         
-        System.out.println("7.afficher la recette jornaliére");
-        System.out.println("8.Afficher la recette journalière durant une période ");
-        System.out.println("9.le plat le plus commandée");
+        System.out.println("7.\tafficher la recette jornaliére");
+        System.out.println("8.\tAfficher la recette journalière durant une période ");
+        System.out.println("9.\tle plat le plus commandée");
         
-        
-        System.out.println("0.Sortir");
-        
+  
+        System.out.println("0.\tSortir");
+        System.out.println("************************************************************");
         x=sc.nextInt();
         
         switch(x){

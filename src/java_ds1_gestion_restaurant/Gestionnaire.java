@@ -16,6 +16,7 @@ public class Gestionnaire  {
     public static Vector<Plat> ListeP = new Vector();
     private Vector<commande> ListeC = new Vector();
     private Vector<ligne_commande> ListeLC = new Vector();
+    private String mode_payement;
     
    
    
@@ -53,9 +54,6 @@ public class Gestionnaire  {
 }
     
     
-    
-    //20 166 525
-    //
      
     
     
@@ -72,9 +70,6 @@ public class Gestionnaire  {
             for (int i = 0; i < ListeP.size(); i++) {
             if (ListeP.get(i) instanceof Plat) {              
                 System.out.println(ListeP.get(i));  
-                
-                        
-                        
                     
                 }
             }   
@@ -116,14 +111,39 @@ public class Gestionnaire  {
     
     
     public void cloturer_commande(){
+         
              Scanner sc=new Scanner(System.in);
         System.out.println("Donner le code de la commande : ");
-        int code = sc.nextInt();
+        
+        /*int code = sc.nextInt();
+        do {
+            System.out.println("donner le mode de payement : doit etre espece, cheque ou carte bancaire");
+            mode_payement=sc.nextLine();
+        } while (mode_payement.equals("espece") || mode_payement.equals("cheque")|| mode_payement.equals("carte bancaire"));
+        
              for (int i = 0; i < ListeC.size(); i++) {
                   if (ListeC.get(i).getCode_commande() == code) {              
                 ListeC.get(i).setClient_quitte(true);
             }         
-        }
+        }*/
+        
+       
+        
+        String mode_payement= sc.nextLine();
+        int choix;
+        do 
+        {System.out.println("Quel est le type de commande \n1.espece \n2.cheque \n3.carte_bancaire");
+        
+         choix =sc.nextInt();
+        } while( choix<1 || choix>3);
+          switch (choix)  
+          {
+              case 1: this.mode_payement="espece";break;
+              case 2: this.mode_payement="cheque";break;
+              case 3: this.mode_payement="carte_bancaire";break;
+          
+          }
+          System.out.println("commande bien cloturer ");
          }
   
     
@@ -133,7 +153,7 @@ public class Gestionnaire  {
     public void afficher_recette_journaliere() throws ParseException{
           
         Date mydate = Calendar.getInstance().getTime();
-        DateFormat dateCurrent = new SimpleDateFormat("d MMM yyyy");
+        DateFormat dateCurrent = new SimpleDateFormat("d MM yyyy");
         String currentDate = dateCurrent.format(mydate);
         Date day = dateCurrent.parse(currentDate);
         
@@ -143,20 +163,43 @@ public class Gestionnaire  {
                 somme_recette_journaliere += ListeC.get(i).calcule_totalCommande();             
             }   
         }
+            System.out.println("le recette journaliere est : "+ somme_recette_journaliere);
              
-             
-             
-             
-         }
+  }
          
          
          
          
          
-    public void afficher_recette_journaliere_durant_une_periode(){
-             
-             
-             
+    public void afficher_recette_journaliere_durant_une_periode() throws ParseException{
+        
+        Scanner Sc= new Scanner(System.in);
+        Date DB,DF;
+        SimpleDateFormat simpledateformat=new SimpleDateFormat("DD/MM/YYYY");
+        do {
+               System.out.println("donner la date debut");
+               DB=simpledateformat.parse(Sc.nextLine());
+            
+        } while (DB.after(new Date()));
+        do {
+               System.out.println("donner la date fin");
+               DF=simpledateformat.parse(Sc.nextLine());
+        } while (DF.before(DB));
+        
+        
+        Date mydate = Calendar.getInstance().getTime();
+        DateFormat dateCurrent = new SimpleDateFormat("d MM yyyy");
+        String currentDate = dateCurrent.format(mydate);
+        Date day = dateCurrent.parse(currentDate);
+        
+        int somme_recette_journaliere=0;
+            for (int i = 0; i < ListeC.size(); i++) {
+            if (ListeC.get(i).getDate_commande().compareTo(day) == 0) {              
+                somme_recette_journaliere += ListeC.get(i).calcule_totalCommande();             
+            }   
+        }
+            System.out.println("le recette du cette periode est : "+ somme_recette_journaliere);
+            
          }
          
     
@@ -177,10 +220,9 @@ public class Gestionnaire  {
        }
        System.out.println("Le plat le plus commande est :"+ListeP.get(indice).toString());
    }
-             
-            
-        
-         }
+}
+
+ 
 
 
 
